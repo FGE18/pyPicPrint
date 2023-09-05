@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pyPicPrint\n"
+"POT-Creation-Date: 2023-09-02 11:33+0200\n"
+"PO-Revision-Date: 2023-09-05 19:50+0200\n"
+"Last-Translator: \n"
+"Language-Team: Franck GERVAIS\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-SearchPath-0: main.py\n"
+"X-Poedit-SearchPath-1: picture.py\n"
+"X-Poedit-SearchPath-2: print.py\n"
+
+#: main.py:41
+msgid ""
+"This application gives you the appropriate size for the best "
+"printing.\n"
+"\n"
+msgstr ""
+"Cette application vous informe du format approprié pour une meilleure "
+"impession.\n"
+"\n"
+
+#: main.py:42
+msgid "Developer: "
+msgstr "Développeur : "
+
+#: main.py:45 main.py:88
+msgid "About"
+msgstr "À propos"
+
+#: main.py:57
+msgid "Optimal size printing at "
+msgstr "Taille d'impression optimale à "
+
+#: main.py:57
+msgid " dpi is:"
+msgstr " ppp est :"
+
+#: main.py:58
+msgid " x "
+msgstr " x "
+
+#: main.py:59
+msgid "Optimal size printing"
+msgstr "Taille d'impression optimale"
+
+#: main.py:84
+msgid "Application"
+msgstr "Application"
+
+#: main.py:85
+msgid "Quit"
+msgstr "Quitter"
+
+#: main.py:87
+msgid "Help"
+msgstr "Aide"
+
+#: main.py:91
+msgid "Original picture information"
+msgstr "Informations de l'image originale"
+
+#: main.py:92
+msgid "Height (pixel):"
+msgstr "Hauteur (pixel):"
+
+#: main.py:93
+msgid "Width (pixel):"
+msgstr "Largeur (pixel):"
+
+#: main.py:96
+msgid "Printing definition"
+msgstr "Définition de l'impression"
+
+#: main.py:97
+msgid "Low ("
+msgstr "Basse ("
+
+#: main.py:97 main.py:98 main.py:99
+msgid " dpi)"
+msgstr " ppp)"
+
+#: main.py:98
+msgid "Standard ("
+msgstr "Standard ("
+
+#: main.py:99
+msgid "High ("
+msgstr "Haute ("
+
+#: main.py:100
+msgid "Submit"
+msgstr "Envoyer"
+
+#~ msgid "Debug"
+#~ msgstr "Déboggage"
+
+#~ msgid "Definition :"
+#~ msgstr "Définition :"
+
+#~ msgid "Low"
+#~ msgstr "Basse"
