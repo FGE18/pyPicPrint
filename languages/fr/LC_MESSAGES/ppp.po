@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pyPicPrint\n"
-"POT-Creation-Date: 2023-09-02 11:33+0200\n"
-"PO-Revision-Date: 2023-09-05 19:50+0200\n"
+"POT-Creation-Date: 2023-09-10 12:09+0200\n"
+"PO-Revision-Date: 2023-09-10 12:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: Franck GERVAIS\n"
 "Language: fr_FR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: picture.py\n"
 "X-Poedit-SearchPath-2: print.py\n"
 
-#: main.py:41
+#: main.py:40
 msgid ""
 "This application gives you the appropriate size for the best "
 "printing.\n"
@@ -28,75 +28,91 @@ msgstr ""
 "impession.\n"
 "\n"
 
-#: main.py:42
+#: main.py:41
 msgid "Developer: "
 msgstr "Développeur : "
 
-#: main.py:45 main.py:88
+#: main.py:44 main.py:106
 msgid "About"
 msgstr "À propos"
 
-#: main.py:57
+#: main.py:52 main.py:55
+msgid "Configuration page"
+msgstr "Page de configuration"
+
+#: main.py:53
+msgid "Unit of length: "
+msgstr "Unité de longueur: "
+
+#: main.py:54
+msgid "Coming soon..."
+msgstr "À venir…"
+
+#: main.py:67
 msgid "Optimal size printing at "
 msgstr "Taille d'impression optimale à "
 
-#: main.py:57
+#: main.py:67
 msgid " dpi is:"
 msgstr " ppp est :"
 
-#: main.py:58
+#: main.py:68
 msgid " x "
 msgstr " x "
 
-#: main.py:59
+#: main.py:69
 msgid "Optimal size printing"
 msgstr "Taille d'impression optimale"
 
-#: main.py:84
+#: main.py:101
 msgid "Application"
 msgstr "Application"
 
-#: main.py:85
+#: main.py:102
+msgid "Configuration"
+msgstr "Configuration"
+
+#: main.py:103
 msgid "Quit"
 msgstr "Quitter"
 
-#: main.py:87
+#: main.py:105
 msgid "Help"
 msgstr "Aide"
 
-#: main.py:91
+#: main.py:109
 msgid "Original picture information"
 msgstr "Informations de l'image originale"
 
-#: main.py:92
+#: main.py:110
 msgid "Height (pixel):"
 msgstr "Hauteur (pixel):"
 
-#: main.py:93
+#: main.py:111
 msgid "Width (pixel):"
 msgstr "Largeur (pixel):"
 
-#: main.py:96
+#: main.py:114
 msgid "Printing definition"
 msgstr "Définition de l'impression"
 
-#: main.py:97
+#: main.py:115
 msgid "Low ("
 msgstr "Basse ("
 
-#: main.py:97 main.py:98 main.py:99
+#: main.py:115 main.py:116 main.py:117
 msgid " dpi)"
 msgstr " ppp)"
 
-#: main.py:98
+#: main.py:116
 msgid "Standard ("
 msgstr "Standard ("
 
-#: main.py:99
+#: main.py:117
 msgid "High ("
 msgstr "Haute ("
 
-#: main.py:100
+#: main.py:118
 msgid "Submit"
 msgstr "Envoyer"
 

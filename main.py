@@ -44,6 +44,17 @@ def about():
     showinfo(_('About'), message=about_message)
 
 
+def configure():
+    """This function displays configuration from "Configuration" menu entry
+    Parameters: none
+    Returns: void
+    """
+    config_message = _("Configuration page") +"\n\n"
+    config_message += _("Unit of length: ") + config.get('USER', 'USER_UNIT') + "\n"
+    config_message += _("Coming soon...")
+    showinfo(_('Configuration page'), message=config_message)
+
+
 def show_optimal_print_size(f_height, f_width, f_def, f_unit):
     """This function displays information about optimal size printing in an infobox.
     Parameters: f_height -- Integer containing image height
@@ -75,9 +86,14 @@ class Application(tk.Tk):
         definition = tk.IntVar()
         unit = config.get('USER', 'USER_UNIT')
 
-        # Icons loading
+        # Icons application loading
         camera_icon = tk.PhotoImage(file="./pictures/camera.png")
         printer_icon = tk.PhotoImage(file="./pictures/printer.png")
+
+        # Icons menu loading
+        menu_conf_icon = tk.PhotoImage(file="./pictures/menu-conf.png")
+        menu_help_icon = tk.PhotoImage(file="./pictures/menu-help.png")
+        menu_quit_icon = tk.PhotoImage(file="./pictures/menu-quit.png")
 
         # Titlebar icon
         self.iconphoto(False, printer_icon)
@@ -88,10 +104,12 @@ class Application(tk.Tk):
 
         self.sAppMenu = tk.Menu(self.appMenu)
         self.appMenu.add_cascade(label=_('Application'), menu=self.sAppMenu)
-        self.sAppMenu.add_command(label=_('Quit'), command=self.quit)
+        self.sAppMenu.add_command(label=_('Configuration'), image=menu_conf_icon, compound='left', command=configure)
+        self.sAppMenu.add_separator()
+        self.sAppMenu.add_command(label=_('Quit'), image=menu_quit_icon, compound='left', command=self.quit)
         self.sHelpMenu = tk.Menu(self.appMenu)
         self.appMenu.add_cascade(label=_('Help'), menu=self.sHelpMenu)
-        self.sHelpMenu.add_command(label=_('About'), command=about)
+        self.sHelpMenu.add_command(label=_('About'), image=menu_help_icon, compound='left', command=about)
 
         # Form creation
         tk.Label(self, text=_("Original picture information"), font=("Arial Bold", 12), foreground="midnight blue").grid(row=1, column=2)
