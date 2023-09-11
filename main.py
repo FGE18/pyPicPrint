@@ -72,6 +72,9 @@ def show_optimal_print_size(f_height, f_width, f_def, f_unit):
 # Class for GUI
 class Application(tk.Tk):
 
+
+
+
     def __init__(self):
         tk.Tk.__init__(self)
         self.sAppMenu = None
@@ -91,6 +94,10 @@ class Application(tk.Tk):
         printer_icon = tk.PhotoImage(file="./pictures/printer.png")
 
         # Icons menu loading
+        # Variables containing icon need to be set as global to be shown in Tkinter menu.
+        global menu_conf_icon
+        global menu_help_icon
+        global menu_quit_icon
         menu_conf_icon = tk.PhotoImage(file="./pictures/menu-conf.png")
         menu_help_icon = tk.PhotoImage(file="./pictures/menu-help.png")
         menu_quit_icon = tk.PhotoImage(file="./pictures/menu-quit.png")
