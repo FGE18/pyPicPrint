@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pyPicPrint\n"
-"POT-Creation-Date: 2023-09-10 12:09+0200\n"
+"POT-Creation-Date: 2023-09-17 21:17+0200\n"
 "PO-Revision-Date: 2023-07-18 23:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: Franck GERVAIS\n"
@@ -27,11 +27,11 @@ msgstr ""
 msgid "Developer: "
 msgstr ""
 
-#: main.py:44 main.py:106
+#: main.py:44 main.py:116
 msgid "About"
 msgstr ""
 
-#: main.py:52 main.py:55
+#: main.py:52 main.py:55 main.py:140
 msgid "Configuration page"
 msgstr ""
 
@@ -59,54 +59,70 @@ msgstr ""
 msgid "Optimal size printing"
 msgstr ""
 
-#: main.py:101
+#: main.py:110
 msgid "Application"
 msgstr ""
 
-#: main.py:102
+#: main.py:111
 msgid "Configuration"
 msgstr ""
 
-#: main.py:103
+#: main.py:113
 msgid "Quit"
 msgstr ""
 
-#: main.py:105
+#: main.py:115
 msgid "Help"
 msgstr ""
 
-#: main.py:109
+#: main.py:119
 msgid "Original picture information"
 msgstr ""
 
-#: main.py:110
+#: main.py:120
 msgid "Height (pixel):"
 msgstr ""
 
-#: main.py:111
+#: main.py:121
 msgid "Width (pixel):"
 msgstr ""
 
-#: main.py:114
+#: main.py:124
 msgid "Printing definition"
 msgstr ""
 
-#: main.py:115
+#: main.py:125
 msgid "Low ("
 msgstr ""
 
-#: main.py:115 main.py:116 main.py:117
+#: main.py:125 main.py:126 main.py:127
 msgid " dpi)"
 msgstr ""
 
-#: main.py:116
+#: main.py:126
 msgid "Standard ("
 msgstr ""
 
-#: main.py:117
+#: main.py:127
 msgid "High ("
 msgstr ""
 
-#: main.py:118
+#: main.py:128
 msgid "Submit"
+msgstr ""
+
+#: main.py:147
+msgid "Unit configuration value"
+msgstr ""
+
+#: main.py:148
+msgid "Centimeter"
+msgstr ""
+
+#: main.py:149
+msgid "Inch"
+msgstr ""
+
+#: main.py:150
+msgid "Save"
 msgstr ""

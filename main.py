@@ -72,9 +72,6 @@ def show_optimal_print_size(f_height, f_width, f_def, f_unit):
 # Class for GUI
 class Application(tk.Tk):
 
-
-
-
     def __init__(self):
         tk.Tk.__init__(self)
         self.sAppMenu = None
@@ -111,7 +108,7 @@ class Application(tk.Tk):
 
         self.sAppMenu = tk.Menu(self.appMenu)
         self.appMenu.add_cascade(label=_('Application'), menu=self.sAppMenu)
-        self.sAppMenu.add_command(label=_('Configuration'), image=menu_conf_icon, compound='left', command=configure)
+        self.sAppMenu.add_command(label=_('Configuration'), image=menu_conf_icon, compound='left', command=lambda: ConfWin(unit) )
         self.sAppMenu.add_separator()
         self.sAppMenu.add_command(label=_('Quit'), image=menu_quit_icon, compound='left', command=self.quit)
         self.sHelpMenu = tk.Menu(self.appMenu)
@@ -129,6 +126,28 @@ class Application(tk.Tk):
         tk.Radiobutton(self, text=_("Standard (") + str(printing.STANDARD_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.STANDARD_DEFINITION).grid(row=8, column=1, sticky=tk.W)
         tk.Radiobutton(self, text=_("High (") + str(printing.HIGH_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.HIGH_DEFINITION).grid(row=9, column=1, sticky=tk.W)
         tk.Button(self, text=_('Submit'), command=lambda: show_optimal_print_size(my_pic_height.get(), my_pic_width.get(), definition.get(), unit)).grid(row=15, column=2, sticky=tk.W)
+
+
+class ConfWin(tk.Tk):
+    """This class displays a new window to manage configuration settings.
+    """
+    def __init__(self, *args):
+        """
+        :param args: Unit set in config file.
+        """
+        tk.Tk.__init__(self)
+        self.geometry("320x200")
+        self.title(_("Configuration page"))
+        c_unit = args[0]
+        #print(c_unit)
+
+        # Unit form creation
+        xunit = tk.StringVar()
+        xunit.set(c_unit)
+        tk.Label(self, text=_("Unit configuration value"), font=("Arial Bold", 12), foreground="midnight blue").grid(row=1, column=2)
+        tk.Radiobutton(self, text=_("Centimeter"), foreground="dark green", variable=xunit, value="CM").grid(row=7, column=1, sticky=tk.W)
+        tk.Radiobutton(self, text=_("Inch"), foreground="dark green", variable=xunit, value="IN").grid(row=8, column=1, sticky=tk.W)
+        tk.Button(self, text=_('Save'), command=configure).grid(row=15, column=2, sticky=tk.W)
 
 
 if __name__ == "__main__":
