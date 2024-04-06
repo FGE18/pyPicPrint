@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pyPicPrint\n"
-"POT-Creation-Date: 2023-09-17 21:17+0200\n"
+"POT-Creation-Date: 2024-04-06 19:59+0200\n"
 "PO-Revision-Date: 2023-07-18 23:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: Franck GERVAIS\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.2\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: _\n"
@@ -27,102 +27,106 @@ msgstr ""
 msgid "Developer: "
 msgstr ""
 
-#: main.py:44 main.py:116
+#: main.py:44 main.py:89
 msgid "About"
 msgstr ""
 
-#: main.py:52 main.py:55 main.py:140
-msgid "Configuration page"
-msgstr ""
-
-#: main.py:53
-msgid "Unit of length: "
-msgstr ""
-
-#: main.py:54
-msgid "Coming soon..."
-msgstr ""
-
-#: main.py:67
+#: main.py:56
 msgid "Optimal size printing at "
 msgstr ""
 
-#: main.py:67
+#: main.py:56
 msgid " dpi is:"
 msgstr ""
 
-#: main.py:68
+#: main.py:57
 msgid " x "
 msgstr ""
 
-#: main.py:69
+#: main.py:58
 msgid "Optimal size printing"
 msgstr ""
 
-#: main.py:110
+#: main.py:83
 msgid "Application"
 msgstr ""
 
-#: main.py:111
+#: main.py:84
 msgid "Configuration"
 msgstr ""
 
-#: main.py:113
+#: main.py:86
 msgid "Quit"
 msgstr ""
 
-#: main.py:115
+#: main.py:88
 msgid "Help"
 msgstr ""
 
-#: main.py:119
+#: main.py:125
 msgid "Original picture information"
 msgstr ""
 
-#: main.py:120
+#: main.py:126
 msgid "Height (pixel):"
 msgstr ""
 
-#: main.py:121
+#: main.py:127
 msgid "Width (pixel):"
 msgstr ""
 
-#: main.py:124
+#: main.py:130
 msgid "Printing definition"
 msgstr ""
 
-#: main.py:125
+#: main.py:131
 msgid "Low ("
 msgstr ""
 
-#: main.py:125 main.py:126 main.py:127
+#: main.py:131 main.py:132 main.py:133
 msgid " dpi)"
 msgstr ""
 
-#: main.py:126
+#: main.py:132
 msgid "Standard ("
 msgstr ""
 
-#: main.py:127
+#: main.py:133
 msgid "High ("
 msgstr ""
 
-#: main.py:128
+#: main.py:134
 msgid "Submit"
 msgstr ""
 
-#: main.py:147
+#: main.py:143
+msgid "Configuration page"
+msgstr ""
+
+#: main.py:151
 msgid "Unit configuration value"
 msgstr ""
 
-#: main.py:148
+#: main.py:152
 msgid "Centimeter"
 msgstr ""
 
-#: main.py:149
+#: main.py:153
 msgid "Inch"
 msgstr ""
 
-#: main.py:150
+#: main.py:154
 msgid "Save"
+msgstr ""
+
+#: main.py:155
+msgid "Cancel"
+msgstr ""
+
+#: main.py:167
+msgid "Parameter has been set to: "
+msgstr ""
+
+#: main.py:168
+msgid "Result"
 msgstr ""
