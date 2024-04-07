@@ -117,14 +117,14 @@ class Application(tk.Tk):
 
         # Variables definition
         definition = tk.IntVar()
+        definition.set(72)
         error_msg_height = tk.StringVar()
         error_msg_width = tk.StringVar()
         my_pic_height = tk.StringVar()
         my_pic_width = tk.StringVar()
-        unit = config.get('USER', 'USER_UNIT')
 
         @staticmethod
-        def height_validation()-> bool:
+        def height_validation()->bool:
             """
             This function checks if height entry is valid (positive integer) or not.
             :return: bool True if entry is valid and False if entry is empty or not valid.
@@ -142,7 +142,7 @@ class Application(tk.Tk):
                 return False
 
         @staticmethod
-        def width_validation()-> bool:
+        def width_validation()->bool:
             """
             This function checks if width entry is valid (positive integer) or not.
             :return: bool True if entry is valid and False if entry is empty or not valid.
@@ -171,7 +171,7 @@ class Application(tk.Tk):
         tk.Radiobutton(self, text=_("Low (") + str(printing.LOW_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.LOW_DEFINITION).grid(row=7, column=1, sticky=tk.W)
         tk.Radiobutton(self, text=_("Standard (") + str(printing.STANDARD_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.STANDARD_DEFINITION).grid(row=8, column=1, sticky=tk.W)
         tk.Radiobutton(self, text=_("High (") + str(printing.HIGH_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.HIGH_DEFINITION).grid(row=9, column=1, sticky=tk.W)
-        tk.Button(self, text=_('Submit'), command=lambda: show_optimal_print_size(my_pic_height.get(), my_pic_width.get(), definition.get(), unit)).grid(row=15, column=2, sticky=tk.W)
+        tk.Button(self, text=_('Submit'), command=lambda: show_optimal_print_size(my_pic_height.get(), my_pic_width.get(), definition.get(), config.get('USER', 'USER_UNIT'))).grid(row=15, column=2, sticky=tk.W)
 
 class ConfWin(tk.Toplevel):
     """
@@ -206,6 +206,7 @@ class ConfWin(tk.Toplevel):
             config.write(configfile)
         change_msg=_("Parameter has been set to: ") + val
         showinfo(_('Result'), message=change_msg)
+        config.read('config.cfg')
 
 
 if __name__ == "__main__":
