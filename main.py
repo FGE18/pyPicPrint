@@ -116,17 +116,57 @@ class Application(tk.Tk):
         self.iconbitmap('./pictures/camera.ico')
 
         # Variables definition
+        definition = tk.IntVar()
+        error_msg_height = tk.StringVar()
+        error_msg_width = tk.StringVar()
         my_pic_height = tk.StringVar()
         my_pic_width = tk.StringVar()
-        definition = tk.IntVar()
         unit = config.get('USER', 'USER_UNIT')
+
+        @staticmethod
+        def height_validation()-> bool:
+            """
+            This function checks if height entry is valid (positive integer) or not.
+            :return: bool True if entry is valid and False if entry is empty or not valid.
+            """
+            e_height = my_pic_height.get()
+            if e_height:
+                if e_height.isdigit() and int(e_height) > 0:
+                    error_msg_height.set("")
+                    return True
+                else:
+                    error_msg_height.set(_("Invalid entry!"))
+                    return False
+            else:
+                error_msg_height.set(_("Entry is empty!"))
+                return False
+
+        @staticmethod
+        def width_validation()-> bool:
+            """
+            This function checks if width entry is valid (positive integer) or not.
+            :return: bool True if entry is valid and False if entry is empty or not valid.
+            """
+            e_width = my_pic_width.get()
+            if e_width:
+                if e_width.isdigit() and int(e_width) > 0:
+                    error_msg_width.set("")
+                    return True
+                else:
+                    error_msg_width.set(_("Invalid entry!"))
+                    return False
+            else:
+                error_msg_width.set(_("Entry is empty!"))
+                return False
 
         # Form creation
         tk.Label(self, text=_("Original picture information"), font=("Arial Bold", 12), foreground="midnight blue").grid(row=1, column=2)
         tk.Label(self, text=_("Height (pixel):"), font=("Arial Bold", 10), foreground="midnight blue").grid(row=3, column=1)
         tk.Label(self, text=_("Width (pixel):"), font=("Arial Bold", 10), foreground="midnight blue").grid(row=5, column=1)
-        tk.Entry(self, width=10, textvariable=my_pic_height).grid(row=3, column=2)
-        tk.Entry(self, width=10, textvariable=my_pic_width).grid(row=5, column=2)
+        tk.Entry(self, width=10, textvariable=my_pic_height, validatecommand=height_validation, validate="focusout").grid(row=3, column=2)
+        tk.Entry(self, width=10, textvariable=my_pic_width, validatecommand=width_validation, validate="focusout").grid(row=5, column=2)
+        tk.Label(self, textvariable=error_msg_height, font=("Arial Bold", 10), foreground="red").grid(row=3, column=3)
+        tk.Label(self, textvariable=error_msg_width, font=("Arial Bold", 10), foreground="red").grid(row=5, column=3)
         tk.Label(self, text=_("Printing definition"), font=("Arial Bold", 12), foreground="dark green").grid(row=6, column=2)
         tk.Radiobutton(self, text=_("Low (") + str(printing.LOW_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.LOW_DEFINITION).grid(row=7, column=1, sticky=tk.W)
         tk.Radiobutton(self, text=_("Standard (") + str(printing.STANDARD_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.STANDARD_DEFINITION).grid(row=8, column=1, sticky=tk.W)
@@ -166,7 +206,6 @@ class ConfWin(tk.Toplevel):
             config.write(configfile)
         change_msg=_("Parameter has been set to: ") + val
         showinfo(_('Result'), message=change_msg)
-
 
 
 if __name__ == "__main__":

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pyPicPrint\n"
-"POT-Creation-Date: 2024-04-06 19:59+0200\n"
+"POT-Creation-Date: 2024-04-07 17:24+0200\n"
 "PO-Revision-Date: 2023-07-18 23:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: Franck GERVAIS\n"
@@ -63,70 +63,78 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: main.py:125
+#: main.py:138 main.py:156
+msgid "Invalid entry!"
+msgstr ""
+
+#: main.py:141 main.py:159
+msgid "Entry is empty!"
+msgstr ""
+
+#: main.py:163
 msgid "Original picture information"
 msgstr ""
 
-#: main.py:126
+#: main.py:164
 msgid "Height (pixel):"
 msgstr ""
 
-#: main.py:127
+#: main.py:165
 msgid "Width (pixel):"
 msgstr ""
 
-#: main.py:130
+#: main.py:170
 msgid "Printing definition"
 msgstr ""
 
-#: main.py:131
+#: main.py:171
 msgid "Low ("
 msgstr ""
 
-#: main.py:131 main.py:132 main.py:133
+#: main.py:171 main.py:172 main.py:173
 msgid " dpi)"
 msgstr ""
 
-#: main.py:132
+#: main.py:172
 msgid "Standard ("
 msgstr ""
 
-#: main.py:133
+#: main.py:173
 msgid "High ("
 msgstr ""
 
-#: main.py:134
+#: main.py:174
 msgid "Submit"
 msgstr ""
 
-#: main.py:143
+#: main.py:183
 msgid "Configuration page"
 msgstr ""
 
-#: main.py:151
+#: main.py:191
 msgid "Unit configuration value"
 msgstr ""
 
-#: main.py:152
+#: main.py:192
 msgid "Centimeter"
 msgstr ""
 
-#: main.py:153
+#: main.py:193
 msgid "Inch"
 msgstr ""
 
-#: main.py:154
+#: main.py:194
 msgid "Save"
 msgstr ""
 
-#: main.py:155
+#: main.py:195
 msgid "Cancel"
 msgstr ""
 
-#: main.py:167
+#: main.py:207
 msgid "Parameter has been set to: "
 msgstr ""
 
-#: main.py:168
+#: main.py:208
 msgid "Result"
 msgstr ""
