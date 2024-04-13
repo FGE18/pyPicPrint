@@ -9,6 +9,7 @@ import os
 import sys
 import tkinter as tk
 from tkinter.messagebox import showinfo
+from tkinter import ttk
 
 # App import
 import picture
@@ -42,20 +43,6 @@ def about():
     about_message += config.get('APPLICATION', 'APP_AUTHOR') + "\n\n"
     about_message += config.get('APPLICATION', 'APP_VERSION')
     showinfo(_('About'), message=about_message)
-
-
-def show_optimal_print_size(f_height:int, f_width:int, f_def:int, f_unit:str):
-    """This function displays information about optimal size printing in an infobox.
-    :Parameters: f_height -- Integer containing image height
-    :Parameters: f_width -- Integer containing image width
-    :Parameters: f_def -- Integer containing printing definition
-    :Parameters: f_unit -- String containing unit
-    :Returns: None
-    """
-    my_pic = picture.Picture(f_height, f_width)
-    info_msg = _("Optimal size printing at ") + str(f_def) + _(" dpi is:") + "\n\n"
-    info_msg += str(my_pic.get_optimal_print_width(f_def, f_unit)) + f_unit + _(" x ") + str(my_pic.get_optimal_print_height(f_def, f_unit)) + f_unit
-    showinfo(_('Optimal size printing'), message=info_msg)
 
 
 class Menu(tk.Menu):
@@ -116,62 +103,85 @@ class Application(tk.Tk):
         self.iconbitmap('./pictures/camera.ico')
 
         # Variables definition
-        definition = tk.IntVar()
-        definition.set(72)
-        error_msg_height = tk.StringVar()
-        error_msg_width = tk.StringVar()
-        my_pic_height = tk.StringVar()
-        my_pic_width = tk.StringVar()
-
-        @staticmethod
-        def height_validation()->bool:
-            """
-            This function checks if height entry is valid (positive integer) or not.
-            :return: bool True if entry is valid and False if entry is empty or not valid.
-            """
-            e_height = my_pic_height.get()
-            if e_height:
-                if e_height.isdigit() and int(e_height) > 0:
-                    error_msg_height.set("")
-                    return True
-                else:
-                    error_msg_height.set(_("Invalid entry!"))
-                    return False
-            else:
-                error_msg_height.set(_("Entry is empty!"))
-                return False
-
-        @staticmethod
-        def width_validation()->bool:
-            """
-            This function checks if width entry is valid (positive integer) or not.
-            :return: bool True if entry is valid and False if entry is empty or not valid.
-            """
-            e_width = my_pic_width.get()
-            if e_width:
-                if e_width.isdigit() and int(e_width) > 0:
-                    error_msg_width.set("")
-                    return True
-                else:
-                    error_msg_width.set(_("Invalid entry!"))
-                    return False
-            else:
-                error_msg_width.set(_("Entry is empty!"))
-                return False
+        self.definition = tk.IntVar()
+        self.definition.set(printing.LOW_DEFINITION)
+        self.error_msg_height = tk.StringVar()
+        self.error_msg_width = tk.StringVar()
+        self.my_pic_height = tk.StringVar()
+        self.my_pic_width = tk.StringVar()
+        self.result_msg = tk.StringVar()
 
         # Form creation
-        tk.Label(self, text=_("Original picture information"), font=("Arial Bold", 12), foreground="midnight blue").grid(row=1, column=2)
-        tk.Label(self, text=_("Height (pixel):"), font=("Arial Bold", 10), foreground="midnight blue").grid(row=3, column=1)
-        tk.Label(self, text=_("Width (pixel):"), font=("Arial Bold", 10), foreground="midnight blue").grid(row=5, column=1)
-        tk.Entry(self, width=10, textvariable=my_pic_height, validatecommand=height_validation, validate="focusout").grid(row=3, column=2)
-        tk.Entry(self, width=10, textvariable=my_pic_width, validatecommand=width_validation, validate="focusout").grid(row=5, column=2)
-        tk.Label(self, textvariable=error_msg_height, font=("Arial Bold", 10), foreground="red").grid(row=3, column=3)
-        tk.Label(self, textvariable=error_msg_width, font=("Arial Bold", 10), foreground="red").grid(row=5, column=3)
-        tk.Label(self, text=_("Printing definition"), font=("Arial Bold", 12), foreground="dark green").grid(row=6, column=2)
-        tk.Radiobutton(self, text=_("Low (") + str(printing.LOW_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.LOW_DEFINITION).grid(row=7, column=1, sticky=tk.W)
-        tk.Radiobutton(self, text=_("Standard (") + str(printing.STANDARD_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.STANDARD_DEFINITION).grid(row=8, column=1, sticky=tk.W)
-        tk.Radiobutton(self, text=_("High (") + str(printing.HIGH_DEFINITION) + _(" dpi)"), foreground="dark green", variable=definition, value=printing.HIGH_DEFINITION).grid(row=9, column=1, sticky=tk.W)
-        tk.Button(self, text=_('Submit'), command=lambda: show_optimal_print_size(my_pic_height.get(), my_pic_width.get(), definition.get(), config.get('USER', 'USER_UNIT'))).grid(row=15, column=2, sticky=tk.W)
+        frm_form=tk.Frame(self)
+        tk.Label(frm_form, text=_("Original picture information"), font=("Arial Bold", 12), foreground="midnight blue").grid(row=1, column=2)
+        tk.Label(frm_form, text=_("Height (pixel):"), font=("Arial Bold", 10), foreground="midnight blue").grid(row=3, column=1)
+        tk.Label(frm_form, text=_("Width (pixel):"), font=("Arial Bold", 10), foreground="midnight blue").grid(row=5, column=1)
+        tk.Entry(frm_form, width=10, textvariable=self.my_pic_height, validatecommand=self.height_validation, validate="focusout").grid(row=3, column=2)
+        tk.Entry(frm_form, width=10, textvariable=self.my_pic_width, validatecommand=self.width_validation, validate="focusout").grid(row=5, column=2)
+        tk.Label(frm_form, textvariable=self.error_msg_height, font=("Arial Bold", 10), foreground="red").grid(row=3, column=3)
+        tk.Label(frm_form, textvariable=self.error_msg_width, font=("Arial Bold", 10), foreground="red").grid(row=5, column=3)
+        tk.Label(frm_form, text=_("Printing definition"), font=("Arial Bold", 12), foreground="dark green").grid(row=6, column=2)
+        tk.Radiobutton(frm_form, text=_("Low (") + str(printing.LOW_DEFINITION) + _(" dpi)"), foreground="dark green", variable=self.definition, value=printing.LOW_DEFINITION).grid(row=7, column=1, sticky=tk.W)
+        tk.Radiobutton(frm_form, text=_("Standard (") + str(printing.STANDARD_DEFINITION) + _(" dpi)"), foreground="dark green", variable=self.definition, value=printing.STANDARD_DEFINITION).grid(row=8, column=1, sticky=tk.W)
+        tk.Radiobutton(frm_form, text=_("High (") + str(printing.HIGH_DEFINITION) + _(" dpi)"), foreground="dark green", variable=self.definition, value=printing.HIGH_DEFINITION).grid(row=9, column=1, sticky=tk.W)
+        tk.Button(frm_form, text=_('Submit'), command=lambda: self.display_optimal_print_size(self.my_pic_height.get(), self.my_pic_width.get(), self.definition.get(), config.get('USER', 'USER_UNIT'))).grid(row=15, column=2, sticky=tk.W)
+        frm_form.grid(row=1, column=1)
+        ttk.Separator(self, orient='horizontal').grid(row=17, sticky="ew", columnspan=3, pady=10)
+        frm_result=tk.Frame(self, bd=1)
+        tk.Label(frm_result, textvariable=self.result_msg).grid(row=1, column=1)
+        frm_result.grid(row=20, column=1)
+
+    def height_validation(self)->bool:
+        """
+        This function checks if height entry is valid (positive integer) or not.
+        :return: bool True if entry is valid and False if entry is empty or not valid.
+        """
+        e_height = self.my_pic_height.get()
+        if e_height:
+            if e_height.isdigit() and int(e_height) > 0:
+                self.error_msg_height.set("")
+                return True
+            else:
+                self.error_msg_height.set(_("Invalid entry!"))
+                return False
+        else:
+            self.error_msg_height.set(_("Entry is empty!"))
+            return False
+
+
+    def width_validation(self)->bool:
+        """
+        This function checks if width entry is valid (positive integer) or not.
+        :return: bool True if entry is valid and False if entry is empty or not valid.
+        """
+        e_width = self.my_pic_width.get()
+        if e_width:
+            if e_width.isdigit() and int(e_width) > 0:
+                self.error_msg_width.set("")
+                return True
+            else:
+                self.error_msg_width.set(_("Invalid entry!"))
+                return False
+        else:
+            self.error_msg_width.set(_("Entry is empty!"))
+            return False
+
+
+    def display_optimal_print_size(self, f_height: int, f_width: int, f_def: int, f_unit: str):
+        """This method computes optimal print size with values entered in parameters and set result_msg value. This
+        value is displayed in bottom of windows (in frm_result frame).
+        :Parameters: f_height -- Integer containing image height
+        :Parameters: f_width -- Integer containing image width
+        :Parameters: f_def -- Integer containing printing definition
+        :Parameters: f_unit -- String containing unit
+        :Returns: None
+        """
+        my_pic = picture.Picture(f_height, f_width)
+        info_msg = _("Optimal size printing at ") + str(f_def) + _(" dpi is:") + "\n\n"
+        info_msg += str(my_pic.get_optimal_print_width(f_def, f_unit)) + f_unit + _(" x ") + str(
+            my_pic.get_optimal_print_height(f_def, f_unit)) + f_unit
+        self.result_msg.set(info_msg)
+
 
 class ConfWin(tk.Toplevel):
     """
@@ -193,6 +203,7 @@ class ConfWin(tk.Toplevel):
         tk.Radiobutton(self, text=_("Inch"), foreground="dark green", variable=radio_unit, value="IN").grid(row=8, column=1, sticky=tk.W)
         tk.Button(self, text=_('Save'), command=lambda:self.save_unit_conf(radio_unit.get())).grid(row=15, column=1, sticky=tk.W)
         tk.Button(self, text=_('Cancel'), command=self.destroy).grid(row=15, column=2, sticky=tk.W)
+
 
     @staticmethod
     def save_unit_conf(val:str):

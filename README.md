@@ -2,11 +2,12 @@
 Python application to find picture optimal print size depending print resolution
 
 -- Version 0.2 --
-* Fixed : Gettext Windows environment support.
+* Code refactoring.
+* Enhancement : Result is displayed in the same window.
 * Enhancement : Validity information added in forms.
 * Enhancement : Unit can be changed (centimeter or inch).
 * Enhancement : Titlebar icon added in main window.
-* Code refactoring.
+* Fixed : Gettext Windows environment support.
 * French translation updated.
 
 -- Version 0.1 -- 
